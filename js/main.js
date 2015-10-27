@@ -5,13 +5,13 @@ import moment from 'moment';
 
 import ArtistCollection from './artist_collection';
 import ArtistTemplate from './artist_template';
-console.log('Hello, World');
+
 
 
 $.ajaxSetup({
 	headers: {
-		'X-Parse-Application-Id': 'Hb9fpOtQM6AIAlMG19jxv1ccpcLMnVTw6ZNhoUYx',
-		'X-Parse-REST_API_KEY': 'QjyClBI5IbrTpjL1wpyzVJhlE2WJnfQmh1C6J040'
+		'X-Parse-Application-Id': 'KZubsuaEP5mWngRddElnioU22ok9OskFZazZsHeu',
+		'X-Parse-REST-API-KEY': 'lHBHuvBoNoPpDNxNgHg5Akjey5zLNJswmL7wgAI8'
 	}
 });
 
@@ -22,7 +22,18 @@ function showArtist(){
 
 	artist.each(function(performer){
 
-		let data = artist.toJSON();
-		console.log('data', data);
-	})
+		let data = performer.toJSON();
+
+		let $li = $( ArtistTemplate(data) );
+
+		$ol.append($li);
+	});
+	 $('body').html($ol);
 }
+artist.fetch().then(showArtist);
+
+
+// window.ArtistModel = ArtistModel;
+// window.ArtistCollection = ArtistCollection;
+// window.artist = artist;
+// window.showArtist = showArtist;
